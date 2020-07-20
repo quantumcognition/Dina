@@ -1,9 +1,9 @@
 <form>
   <div class="container">
-    <input type="text" placeholder="First Name" value="" name="fname" id="fname" required>
-    <input type="text" placeholder="Last Name" value="" name="lname" id="lname" required>
-    <input type="text" placeholder="City" value="" name="city" id="city" required>
-    <input type="text" placeholder="Postal Code" value="" name="postalCode" id="postalCode" required>
+    <input type="text" placeholder="First Name" [(ngModel)]="fnameUserVal" name="fname" id="fname" required>
+    <input type="text" placeholder="Last Name" [(ngModel)]="lnameUserVal" name="lname" id="lname" required>
+    <input type="text" placeholder="City" [(ngModel)]="cityUserVal" name="city" id="city" required>
+    <input type="text" placeholder="Postal Code" [(ngModel)]="postalCodeUserVal" name="postalCode" id="postalCode" required>
     <button type="submit" class="searchbtn" (click)="search()">Search</button>
   </div>
 
@@ -20,15 +20,23 @@
     <th>Telephone Number</th>
   </tr>
   <tr *ngFor="let info of returnData">
-    <td>{{info.basic["first_name"]}} {{info.basic["middle_name"]}} {{info.basic["last_name"]}}</td>
-    <td>{{ info.addresses[0]["city"] }} {{ info.addresses[0]["state"] }} {{ info.addresses[0]["postal_code"] }}</td>
+    <td (click)="showMoreInfo(info)">{{info.basic["first_name"]}} {{info.basic["middle_name"]}} {{info.basic["last_name"]}}</td>
+    <td (click)="showMoreInfo(info)">{{ info.addresses[0]["city"] }} {{ info.addresses[0]["state"] }} {{ info.addresses[0]["postal_code"] }}</td>
     <!-- <td>{{ info.created_epoch | date:'MM/dd/yyyy'}}</td>
     <td>{{ info.last_updated_epoch | date:'MM/dd/yyyy'}}</td> -->
-    <td>{{ info.taxonomies[0]["desc"] }} {{ info.taxonomies[0]["license"] }} </td>
-    <td>{{ info.addresses[0]["telephone_number"] }}</td>
+    <td (click)="showMoreInfo(info)">{{ info.taxonomies[0]["desc"] }} {{ info.taxonomies[0]["license"] }} </td>
+    <td (click)="showMoreInfo(info)">{{ info.addresses[0]["telephone_number"] }}</td>
 
   </tr>
- 
-  
 </table>
+
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <p>Some text in the Modal..</p>
+    </div>
+  
+
 </div>

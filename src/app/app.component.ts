@@ -7,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
-  
+
   title = "Dina";
   dictionaryData = [];
   returnData = [];
+
+  fnameUserVal = "";
+  lnameUserVal = "";
+  cityUserVal = "";
+  postalCodeUserVal = "";
+
 
   constructor() { }
 
@@ -28,27 +34,23 @@ export class AppComponent implements OnInit {
 
   search() {
 
-    let fnameUserVal = document.getElementById('fname').value;
-    let lnameUserVal = document.getElementById('lname').value;
-    let cityUserVal = document.getElementById('city').value;
-    let postalCodeUserVal = document.getElementById('postalCode').value;
 
-    if (postalCodeUserVal.length != 0) {
-      this.searchHelperAddresses(postalCodeUserVal, 'postal_code');
+    if (this.postalCodeUserVal.length != 0) {
+      this.searchHelperAddresses(this.postalCodeUserVal, 'postal_code');
     }
 
-    else if (cityUserVal.length != 0) {
-      this.searchHelperAddresses(cityUserVal, 'city');
+    else if (this.cityUserVal.length != 0) {
+      this.searchHelperAddresses(this.cityUserVal, 'city');
 
     }
 
-    else if (lnameUserVal != 0) {
-      this.searchHelperBasicUserInformation(lnameUserVal, 'last_name');
+    else if (this.lnameUserVal.length != 0) {
+      this.searchHelperBasicUserInformation(this.lnameUserVal, 'last_name');
 
     }
 
-    else if (fnameUserVal != 0) {
-      this.searchHelperBasicUserInformation(fnameUserVal, 'first_name');
+    else if (this.fnameUserVal.length != 0) {
+      this.searchHelperBasicUserInformation(this.fnameUserVal, 'first_name');
 
     }
 
@@ -62,7 +64,7 @@ export class AppComponent implements OnInit {
 
     for (let i = 0; i < this.dictionaryData.length; i++) {
       let compareUserData = this.dictionaryData[i].basic[key];
-      
+
       if (userData === compareUserData) {
         this.returnData.push(this.dictionaryData[i]);
         console.log(this.returnData);
@@ -74,7 +76,7 @@ export class AppComponent implements OnInit {
 
     for (let i = 0; i < this.dictionaryData.length; i++) {
       let compareUserData = this.dictionaryData[i].addresses[0][key];
-      
+
       if (userData === compareUserData) {
         this.returnData.push(this.dictionaryData[i]);
         console.log(this.returnData);
@@ -82,5 +84,17 @@ export class AppComponent implements OnInit {
     }
   }
 
+
+  showMoreInfo(val) {
+    var modal = document.getElementById("myModal");
+    
+    modal.style.display = "block";
+  }
+
+  closeModal() {
+    var modal = document.getElementById("myModal");
+   
+    modal.style.display = "none";
+  }
 }
 
