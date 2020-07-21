@@ -33,7 +33,6 @@
 
   .container {
       padding: 16px;
-      
       background-color: white;
   }
 
@@ -72,6 +71,7 @@
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      cursor: pointer;
   }
 
   td,

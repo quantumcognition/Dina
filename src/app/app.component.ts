@@ -11,18 +11,17 @@ export class AppComponent implements OnInit {
   title = "Dina";
   dictionaryData = [];
   returnData = [];
+  modalData = [];
 
   fnameUserVal = "";
   lnameUserVal = "";
   cityUserVal = "";
   postalCodeUserVal = "";
 
-
   constructor() { }
 
   ngOnInit() {
     this.getDictionary();
-
   }
 
   getDictionary() {
@@ -33,7 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   search() {
-
+    this.returnData = [];
 
     if (this.postalCodeUserVal.length != 0) {
       this.searchHelperAddresses(this.postalCodeUserVal, 'postal_code');
@@ -57,7 +56,7 @@ export class AppComponent implements OnInit {
     else {
       return 0;
     }
-
+     
   }
 
   searchHelperBasicUserInformation(userData, key) {
@@ -84,17 +83,19 @@ export class AppComponent implements OnInit {
     }
   }
 
-
-  showMoreInfo(val) {
-    var modal = document.getElementById("myModal");
-    
+  showMoreInfo(info) {
+ 
+    let modal = document.getElementById("myModal");
     modal.style.display = "block";
+    // this.modalData = [];
+    this.modalData = [info];
+    
   }
 
   closeModal() {
-    var modal = document.getElementById("myModal");
-   
+    var modal = document.getElementById("myModal"); 
     modal.style.display = "none";
   }
+
 }
 
