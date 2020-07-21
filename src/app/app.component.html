@@ -1,42 +1,44 @@
-<form>
-  <div class="container">
-    <input type="text" placeholder="First Name" [(ngModel)]="fnameUserVal" name="fname" id="fname" required>
-    <input type="text" placeholder="Last Name" [(ngModel)]="lnameUserVal" name="lname" id="lname" required>
-    <input type="text" placeholder="City" [(ngModel)]="cityUserVal" name="city" id="city" required>
-    <input type="text" placeholder="Postal Code" [(ngModel)]="postalCodeUserVal" name="postalCode" id="postalCode" required>
-    <button type="submit" class="searchbtn" (click)="search()">Search</button>
-  </div>
+<div class="container">
+  <form>
 
-</form>
+      <input type="text" placeholder="First Name" [(ngModel)]="fnameUserVal" name="fname" id="fname" required>
+      <input type="text" placeholder="Last Name" [(ngModel)]="lnameUserVal" name="lname" id="lname" required>
+      <input type="text" placeholder="City" [(ngModel)]="cityUserVal" name="city" id="city" required>
+      <input type="text" placeholder="Postal Code" [(ngModel)]="postalCodeUserVal" name="postalCode" id="postalCode"
+        required>
+      <button type="submit" class="searchbtn" (click)="search()">Search</button>
 
-<div class="container" id="info" >
-<table>
-  <tr>
-    <th>Full Name</th>
-    <th>Office Address</th>
-    <!-- <th>Creation Date</th>
+  </form>
+</div>
+
+<div class="container" id="info">
+  <table>
+    <tr>
+      <th>Full Name</th>
+      <th>Office Address</th>
+      <!-- <th>Creation Date</th>
     <th>Creation Date Update</th> -->
-    <th>Taxonomy Description & LicenseCode</th>
-    <th>Telephone Number</th>
-  </tr>
-  <tr *ngFor="let info of returnData">
-    <td (click)="showMoreInfo(info)">{{info.basic["first_name"]}} {{info.basic["middle_name"]}} {{info.basic["last_name"]}}</td>
-    <td (click)="showMoreInfo(info)">{{ info.addresses[0]["city"] }} {{ info.addresses[0]["state"] }} {{ info.addresses[0]["postal_code"] }}</td>
-    <!-- <td>{{ info.created_epoch | date:'MM/dd/yyyy'}}</td>
+      <th>Taxonomy Description & LicenseCode</th>
+      <th>Telephone Number</th>
+    </tr>
+    <tr *ngFor="let info of returnData">
+      <td (click)="showMoreInfo(info)">{{info.basic["first_name"]}} {{info.basic["middle_name"]}}
+        {{info.basic["last_name"]}}</td>
+      <td (click)="showMoreInfo(info)">{{ info.addresses[0]["city"] }} {{ info.addresses[0]["state"] }}
+        {{ info.addresses[0]["postal_code"] }}</td>
+      <!-- <td>{{ info.created_epoch | date:'MM/dd/yyyy'}}</td>
     <td>{{ info.last_updated_epoch | date:'MM/dd/yyyy'}}</td> -->
-    <td (click)="showMoreInfo(info)">{{ info.taxonomies[0]["desc"] }} {{ info.taxonomies[0]["license"] }} </td>
-    <td (click)="showMoreInfo(info)">{{ info.addresses[0]["telephone_number"] }}</td>
+      <td (click)="showMoreInfo(info)">{{ info.taxonomies[0]["desc"] }} {{ info.taxonomies[0]["license"] }} </td>
+      <td (click)="showMoreInfo(info)">{{ info.addresses[0]["telephone_number"] }}</td>
 
-  </tr>
-</table>
+    </tr>
+  </table>
 
   <div id="myModal" class="modal">
-
-    <!-- Modal content -->
     <div class="modal-content">
       <span class="close" (click)="closeModal()">&times;</span>
       <p>Some text in the Modal..</p>
     </div>
-  
 
-</div>
+
+  </div>
